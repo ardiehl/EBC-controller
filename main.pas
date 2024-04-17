@@ -893,7 +893,10 @@ begin
         CapacityEBC := FCurrentCapacity[caEBC];
         CapacityLocal := FCurrentCapacity[caLocal];
         if fLogFileIsOpen then
+        begin
           SaveCSVLine(FLogFile, TSec{vTime}, FLastI, FLastU, FCurrentCapacity[caEBC], FCurrentCapacity[caLocal]);
+          Flush(FLogFile);
+        end;
       end;
       lsVoltage.AddXY(T, FLastU);
       lsInvisibleVoltage.AddXY(0, Round1V(FLastU));
